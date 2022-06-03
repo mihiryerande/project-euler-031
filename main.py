@@ -21,9 +21,9 @@ def coin_sum_ways(n, max_coin):
     """
     Returns the number of ways to make `n` pence
       using any number of coins in general circulation
-      where the maximum value of any individual coin is `max_coin`,
-      meaning coin of value `max_coin` *must* be included.
-
+      where the maximum value of any individual coin is at most `max_coin`.
+    Note that this also includes using zero of `max_coin`.
+    
     Args:
         n        (int): Non-negative integer
         max_coin (int): Maximum value among coins summing to `n`
@@ -41,7 +41,7 @@ def coin_sum_ways(n, max_coin):
     # Idea:
     #     Attempt to use `max_coin` as much as possible to achieve `n`.
     #     Siphon off `max_coin` one-by-one, using smaller coins to fill the gap.
-    #     To avoid redundant counting, maintain computed counts in `COIN_SUM_COUNTS`
+    #     To avoid redundant counting, maintain computed counts in `COIN_SUM_WAYS`
 
     global COIN_SUM_WAYS
     if (n, max_coin) in COIN_SUM_WAYS:
@@ -60,7 +60,7 @@ def coin_sum_ways(n, max_coin):
             next_coin = NEXT_COIN[max_coin]
             ways = 0
             max_coin_count_max, remaining_sum = divmod(n, max_coin)
-            for max_coin_count in range(max_coin_count_max, -1, -1):
+            for _ in range(max_coin_count_max, -1, -1):
                 ways += coin_sum_ways(remaining_sum, next_coin)
                 remaining_sum += max_coin  # Siphon off one `max_coin`
         COIN_SUM_WAYS[(n, max_coin)] = ways
