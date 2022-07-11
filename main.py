@@ -17,7 +17,7 @@ NEXT_COIN = dict(zip(COINS[1:], COINS[:-1]))  # Map of each coin to next-lowest-
 COIN_SUM_WAYS = dict()
 
 
-def coin_sum_ways(n, max_coin):
+def coin_sum_ways(n: int, max_coin: int) -> int:
     """
     Returns the number of ways to make `n` pence
       using any number of coins in general circulation
@@ -67,7 +67,7 @@ def coin_sum_ways(n, max_coin):
         return ways
 
 
-def main(n):
+def main(n: int) -> int:
     """
     Returns the number of ways to make `n` pence
       using any number of coins in general circulation, which are:
