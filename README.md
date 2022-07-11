@@ -1,4 +1,6 @@
-# Project Euler - Problem 31 - Coin Sums
+# Project Euler
+
+## Problem 31 - Coin Sums
 In the United Kingdom the currency is made up of pound (£) and pence (p).
 
 There are eight coins in general circulation:
